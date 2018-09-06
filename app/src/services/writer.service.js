@@ -6,6 +6,8 @@ class WriterService {
 
     static async processMessage(message) {
         logger.debug('Processing message of task', message.taskId);
+        console.log('message record');
+        console.log(message);
         const response = await elasticService.saveBulk(message.index, message.data);
         if (response === false) {
             logger.debug('Not saved correctly');
